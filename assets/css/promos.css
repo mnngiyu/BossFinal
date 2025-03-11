@@ -1,24 +1,88 @@
 body {
-    background: red;
-}
-
-main {
-    width: 100vh;
+    margin: 0;
 }
 
 .display-cards {
-    background: green;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 50px;
 }
 
 .cards {
     display: flex;
-    background: blue;
-    width: 25%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 15px;
+    width: calc(25% - 17px);
+    height: 300px;
+    position: relative;
+    background: rgb(188, 188, 227);
+    transition: 0.5s ease-in;
+}
+
+#form-container:hover {}
+
+#submitForm {
+    position: absolute;
+    top: -10%;
+    left: 117%;
+    border-radius: 50px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+
 }
 
 form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+}
+
+#deletePromo {
+    position: absolute;
+    left: 90%;
+    top: -5%;
+    border-radius: 50px;
+    height: 40px;
+    width: 40px;
+    visibility: hidden;
+
+}
+
+.cards:hover #deletePromo {
+    visibility: visible;
+}
+
+.cards:hover {
+
+    cursor: pointer;
+    background: rgba(123, 120, 120, 0.633);
+
+    h2,
+    p {
+        transition: 0.2s ease-in;
+        color: rgba(0, 0, 0, 0.117);
+
+    }
+
+}
+
+.cards a {
+    display: none;
+    position: absolute;
+    top: 30%;
+    font-size: 2em;
+    text-transform: uppercase;
+    color: white;
+    transition: 0.5s ease-in;
+
+}
+
+.cards:hover a {
+    display: block;
+
 }
