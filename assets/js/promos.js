@@ -12,7 +12,6 @@ async function getPromos() {
         }
     })
     const data = await response.json()
-
     return data
 }
 
@@ -65,7 +64,6 @@ addForm.addEventListener('submit', async (e) => {
         displayPromos(data)
     }
 console.log(data);
-
 })
 
 

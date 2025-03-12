@@ -4,7 +4,7 @@ const idpromo = getId()
 
 function getId(){
     let params = new URLSearchParams(document.location.search);
-    let id = params.get("id"); // is the string "Jonathan"
+    let id = params.get("id")
     return id
 }
 
