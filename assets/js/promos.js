@@ -16,6 +16,7 @@ async function getPromos() {
     return data
 }
 
+// supprime une promo
 async function deletePromos(id, el) {
     const response = await fetch(urlBase + "promos/" + id, {
         method: "DELETE",
@@ -26,6 +27,19 @@ async function deletePromos(id, el) {
     if (response.ok) {
         el.remove()
     }
+}
+
+
+// modifier une promo
+async function updatePromo(id, data) {
+    const response = await fetch(urlBase + "promos/" + id, {
+        method: "PUT",
+        headers: {
+            Authorization: "Bearer " + token
+        }
+
+    })
+
 }
 
 /// soumettre le formulaire
@@ -50,9 +64,12 @@ addForm.addEventListener('submit', async (e) => {
     if (response.ok) {
         displayPromos(data)
     }
+console.log(data);
 
 })
 
+
+// affiche toutes les promos
 async function displayAllPromos() {
     const promos = await getPromos()
     promos.forEach(promo => {
@@ -60,6 +77,7 @@ async function displayAllPromos() {
     });
 }
 
+// affiche créer une promo
 function displayPromos(promo) {
     const displayCards = document.querySelector('.display-cards')
 
@@ -74,7 +92,7 @@ function displayPromos(promo) {
     card.appendChild(namePromo)
 
     // afficher le descriptif
-    const descriptionPromo = document.createElement('h2')
+    const descriptionPromo = document.createElement('h3')
     descriptionPromo.innerHTML = promo.formationDescription
     card.appendChild(descriptionPromo)
 
@@ -97,11 +115,42 @@ function displayPromos(promo) {
     })
     card.appendChild(buttonDelete)
 
+     // Bouton modifier
+     const buttonUpdate = document.createElement('button');
+     buttonUpdate.innerHTML = "Update";
+     buttonDelete.id = "updateButton"
+     card.appendChild(buttonUpdate);
+     buttonUpdate.addEventListener('click', async () => {
+         // Récupérez les données à mettre à jour
+         let data = {
+             name: document.querySelector('#promo-name').value,
+             startDate: document.querySelector('#promo-start').value,
+             endDate: document.querySelector('#promo-end').value,
+             formationDescription: document.querySelector('#promo-description').value,
+         };
+ 
+         const success = await updatePromo(promo._id, data);
+         if (success) {
+             // Mettez à jour l'affichage avec les nouvelles données
+             card.querySelector('h2').innerHTML = data.name;
+             card.querySelector('h3').innerHTML = data.formationDescription;
+             card.querySelectorAll('p')[0].innerHTML = `Start Date: ${data.startDate}`;
+             card.querySelectorAll('p')[1].innerHTML = `End Date: ${data.endDate}`;
+         } else {
+             console.error("Failed to update the resource.");
+         }
+     });
+    
+
+
     //voir le détails
     const details = document.createElement('a')
     details.innerHTML = 'voir le détail'
-    details.href = "./student.html"
+    details.href = `./student.html?id=${promo._id}`
     card.append(details)
+    details.addEventListener("click",()=>{
+        localStorage.setItem('idPromo',promo._id)
+    })
 
 }
 

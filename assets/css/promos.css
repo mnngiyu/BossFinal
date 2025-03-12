@@ -1,5 +1,11 @@
 body {
     margin: 0;
+    background-color: #558868;
+}
+
+main h1 {
+    margin-left: 100px;
+    color: white;
 }
 
 .display-cards {
@@ -9,37 +15,40 @@ body {
     padding: 50px;
 }
 
-.cards {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid black;
-    border-radius: 15px;
-    width: calc(25% - 17px);
-    height: 300px;
+#form-container {
     position: relative;
-    background: rgb(188, 188, 227);
-    transition: 0.5s ease-in;
 }
 
 #form-container:hover {}
 
 #submitForm {
     position: absolute;
-    top: -10%;
-    left: 117%;
+    top: -5%;
+    left: 90%;
     border-radius: 50px;
     height: 40px;
     width: 40px;
     cursor: pointer;
+}
 
+#form-container {
+    display: flex;
+    justify-content: center;
 }
 
 form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: relative;
+    width: 100%;
+}
+
+input {
+    padding: 7px;
+    width: 80%;
+    margin: 10px 0;
 }
 
 #deletePromo {
@@ -47,42 +56,92 @@ form {
     left: 90%;
     top: -5%;
     border-radius: 50px;
+    border-style: none;
     height: 40px;
     width: 40px;
     visibility: hidden;
+    background: rgb(202, 76, 76);
+}
+#updatePromo {
+    position: absolute;
+    left: 80%;
+    top: 10%;
+    border-radius: 50px;
+    border-style: none;
+    height: 40px;
+    width: 40px;
+    visibility: hidden;
+    background: rgb(231, 207, 50);
+}
 
+
+
+.cards {
+    color: white;
+    text-transform: capitalize;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 7px;
+    width: calc(25% - 17px);
+    height: 300px;
+    position: relative;
+    background: url("../images/bg-card-1.jpg") center/cover;
+    transition: 0.5s ease-in;
+    box-shadow: 2px 2px 12px -4px black
+}
+
+.cards h2 {
+    padding: 20px 0;
+    margin: 0;
+    text-align: center;
+    font-size: 2em;
+    border-bottom: 5px solid;
+    background: rgb(100, 208, 235);
+    width: 100%;
 }
 
 .cards:hover #deletePromo {
     visibility: visible;
 }
 
-.cards:hover {
+.cards:hover #updatePromo {
+    visibility: visible;
+}
 
+.cards:hover {
+background: rgba(255, 255, 255, 0.107);
     cursor: pointer;
-    background: rgba(123, 120, 120, 0.633);
 
     h2,
+    h3,
     p {
         transition: 0.2s ease-in;
-        color: rgba(0, 0, 0, 0.117);
-
+        color: rgba(0, 0, 0, 0.273);
     }
-
 }
 
 .cards a {
-    display: none;
     position: absolute;
-    top: 30%;
+    top: 45%;
     font-size: 2em;
     text-transform: uppercase;
     color: white;
-    transition: 0.5s ease-in;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
 
+.cards a:hover {
+    color: black;
+    transition: 0.4s ease;
 }
 
 .cards:hover a {
-    display: block;
+    opacity: 1;
 
 }
