@@ -2,23 +2,29 @@ html {
     margin: 0;
 }
 
+*:focus {
+    outline: none;
+}
+
 body {
     margin: 0;
     height: 100vh;
-    background: url(../images/bg-contact.jpg);
+    background: url(../images/bg-contact.jpg) #f1f0ed;
     background-position: right;
     background-size: contain;
     background-repeat: no-repeat;
+
 }
 
 header {
     margin: 20px 80px;
+    margin-bottom: 150px;
     padding: 0 30px;
-    background: #f6e4e411;
+    background: #b4ced989;
     border-radius: 15px;
 
     a {
-        color: rgb(250, 249, 244);
+        color: rgb(250, 245, 244);
         font-weight: bold;
         text-decoration: none;
         text-shadow: 2px 0px 20px rgba(0, 0, 0, 0.98);
@@ -41,16 +47,23 @@ header {
 main {
     display: flex;
     justify-content: space-around;
+    padding-bottom: 40px;
+    align-items: center;
+
 }
 
 
-/* Informations concernant l'école */
+/* Informations concernant l'école ********************************************************************/
 #contact-info-container {
     padding: 10px;
-    width: 40%;
-    box-shadow: 1px 1px 15px -5px #000000;
+    width: 30%;
+    color: rgb(67, 63, 63);
 }
 
+#contact-info {
+    padding: 0 40px;
+    margin-bottom: 60px;
+}
 
 #contact-info .info-style {
     border-bottom: 1px solid black;
@@ -58,39 +71,83 @@ main {
     flex-direction: column;
 }
 
+#contact-info .info-style h2 {
+    display: flex;
+    align-items: center;
+}
 
-/* Formulaire de contact */
+#contact-info .info-style i {
+    font-size: 0.6em;
+    padding-right: 20px;
+}
+
+/* Formulaire de contact *****************************************************************************************/
 #contact-message-container {
-    background: green;
-    height: 550px;
-    width: 400px;
+    background: white;
     margin-right: 40px;
-    text-align: center;
+    border-radius: 7px;
+    box-shadow: 1px 1px 15px -5px #000000;
+    color: rgb(67, 63, 63);
+    height: 500px;
+
+}
+
+#contact-message-container p {
+    margin: 20px 020px;
+    text-transform: uppercase;
+    font-size: 1em;
+}
+
+.form-container {
+
+    height: 100%;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+
 }
 
 .name-input {
     display: flex;
-    gap: 15px;
+    margin-bottom: 15%;
+    padding: 0 20px;
+    gap: 10px;
+}
 
-    input {
-        width: 40%;
-        height: 20px;
-    }
+.name-input input {
+   gap: 10px;
 }
 
 .input-style {
     height: 25%;
     text-align: start;
-    display: flex; flex-direction: column;
-}
-
-form {
-    height: 100%;
-
-}
-
-.form-container {
-    height: 100%;
     display: flex;
     flex-direction: column;
+    padding: 0 20px;
+}
+
+input {
+    height: 30px;
+    border: 0.5px solid rgb(67, 63, 63);
+    ;
+    border-radius: 3px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #909f00;
+}
+
+button {
+    margin: 0 20px;
+    padding: 15px 20px;
+    border-radius: 7px;
+}
+
+textarea {
+    resize: none;
+    height: 50px;
 }
