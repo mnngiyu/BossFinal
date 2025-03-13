@@ -1,6 +1,32 @@
 body {
     margin: 0;
-    background-color: #558868;
+}
+
+header {
+    margin: 20px 80px;
+    padding: 0 30px;
+    background: #048abf;
+    border-radius: 15px;
+
+    a {
+        color: rgb(250, 245, 244);
+        font-weight: bold;
+        text-decoration: none;
+        text-shadow: 2px 0px 20px rgba(0, 0, 0, 0.98);
+    }
+}
+
+.container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.img-logo {
+    img {
+        width: 100px;
+    }
 }
 
 main h1 {
@@ -62,6 +88,7 @@ input {
     visibility: hidden;
     background: rgb(202, 76, 76);
 }
+
 #updatePromo {
     position: absolute;
     left: 80%;
@@ -77,19 +104,18 @@ input {
 
 
 .cards {
-    color: white;
+    color: #001f2b;
     text-transform: capitalize;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid gray;
+    border: 3px solid #048abf84;
     border-radius: 7px;
     width: calc(25% - 17px);
     height: 300px;
     position: relative;
-    background: url("../images/bg-card-1.jpg") center/cover;
     transition: 0.5s ease-in;
     box-shadow: 2px 2px 12px -4px black
 }
@@ -99,8 +125,6 @@ input {
     margin: 0;
     text-align: center;
     font-size: 2em;
-    border-bottom: 5px solid;
-    background: rgb(100, 208, 235);
     width: 100%;
 }
 
@@ -113,7 +137,7 @@ input {
 }
 
 .cards:hover {
-background: rgba(255, 255, 255, 0.107);
+    background: rgba(255, 255, 255, 0.107);
     cursor: pointer;
 
     h2,

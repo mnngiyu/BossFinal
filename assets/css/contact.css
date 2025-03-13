@@ -17,10 +17,11 @@ body {
 }
 
 header {
+
     margin: 20px 80px;
     margin-bottom: 150px;
     padding: 0 30px;
-    background: #b4ced989;
+    background: #8f9f0088;
     border-radius: 15px;
 
     a {
@@ -65,6 +66,10 @@ main {
     margin-bottom: 60px;
 }
 
+#contact-info h1 {
+    font-size: 3em;
+}
+
 #contact-info .info-style {
     border-bottom: 1px solid black;
     display: flex;
@@ -94,8 +99,9 @@ main {
 
 #contact-message-container p {
     margin: 20px 020px;
-    text-transform: uppercase;
-    font-size: 1em;
+
+    font-size: 2em;
+    font-weight: bold;
 }
 
 .form-container {
@@ -110,6 +116,7 @@ form {
 
 }
 
+
 .name-input {
     display: flex;
     margin-bottom: 15%;
@@ -118,7 +125,7 @@ form {
 }
 
 .name-input input {
-   gap: 10px;
+    gap: 10px;
 }
 
 .input-style {
@@ -141,13 +148,22 @@ input:focus {
     border-color: #909f00;
 }
 
+textarea {
+    resize: none;
+    height: 50px;
+}
+
 button {
     margin: 0 20px;
     padding: 15px 20px;
     border-radius: 7px;
+    background: #8f9f0088;
+    color: white;
+    border: 0;
 }
 
-textarea {
-    resize: none;
-    height: 50px;
+button:hover {
+    background-color: #909f00;
+    cursor: pointer;
+    transition: 0.2s ease;
 }
