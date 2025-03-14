@@ -25,7 +25,6 @@ async function getPromosbyId(id) {
     });
 
     const data = await response.json();
-    console.log(data);
     const startDate = data.startDate ? formatDate(data.startDate) : '';
     const endDate = data.endDate ? formatDate(data.endDate) : '';
 
@@ -72,6 +71,7 @@ function displayPromos(promo) {
     buttonDelete.id = "deletePromo"
     buttonDelete.innerHTML = `<i class="fa-solid fa-trash"></i>`
     buttonDelete.addEventListener('click', () => {
+
         deletePromos(promo._id, card)
     })
     card.appendChild(buttonDelete)
@@ -96,11 +96,12 @@ function displayPromos(promo) {
             const formModifier = document.querySelector('#modifier-form-container')
             formModifier.style.background = "#98d68b"
             await updatePromo(promo._id)
+            reloadPage();
         });
     })
 
-    card.appendChild(buttonUpdate)
 
+    card.appendChild(buttonUpdate)
 
     //voir le détails
     const details = document.createElement('a')
@@ -110,17 +111,6 @@ function displayPromos(promo) {
     details.addEventListener("click", () => {
         localStorage.setItem('idPromo', promo._id)
     })
-    
-    // const cards = document.createElement('div')
-    // cards.innerHTML = 'voir le détail'
-    // cards.href = `./student.html?id=${promo._id}`
-    // card.append(cards)
-    // cards.addEventListener("click", () => {
-    //     localStorage.setItem('idPromo', promo._id)
-    //     //document.querySelector('.cards').value =
-    // })
-
-
 }
 
 // affiche toutes les promos
@@ -151,14 +141,15 @@ addForm.addEventListener('submit', async (e) => {
         body: JSON.stringify(data)
     })
     if (response.ok) {
-        displayPromos(data)
+        const promo = await response.json()
+        displayPromos(promo.data)
     }
     clearForm()
 })
 
 // function modifier une promo
 async function updatePromo(id) {
-    const data = {
+    let data = {
         name: document.querySelector('#modifier-promo-name').value,
         startDate: formatDate(document.querySelector('#modifier-promo-start').value),
         endDate: formatDate(document.querySelector('#modifier-promo-end').value),
@@ -175,6 +166,7 @@ async function updatePromo(id) {
     })
 
     if (response.ok) {
+        
         console.log('Promo mise à jour avec succès');
     }
 }
@@ -197,7 +189,6 @@ async function deletePromos(id, el) {
     })
     if (response.ok) {
         el.remove()
-        console.log('ca marche');
 
     }
 }
@@ -217,4 +208,8 @@ function clearForm() {
     form.reset();
 }
 
+
+function reloadPage() {
+    location.reload();
+}
 displayAllPromos()
