@@ -1,5 +1,6 @@
 html {
     margin: 0;
+
 }
 
 *:focus {
@@ -8,7 +9,7 @@ html {
 
 body {
     margin: 0;
-    height: 100vh;
+    height: 100%;
     background: url(../images/bg-contact.jpg) #f1f0ed;
     background-position: right;
     background-size: contain;
@@ -17,9 +18,7 @@ body {
 }
 
 header {
-
     margin: 20px 80px;
-    margin-bottom: 150px;
     padding: 0 30px;
     background: #8f9f0088;
     border-radius: 15px;
@@ -36,7 +35,6 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .img-logo {
@@ -48,9 +46,7 @@ header {
 main {
     display: flex;
     justify-content: space-around;
-    padding-bottom: 40px;
     align-items: center;
-
 }
 
 
@@ -93,29 +89,29 @@ main {
     border-radius: 7px;
     box-shadow: 1px 1px 15px -5px #000000;
     color: rgb(67, 63, 63);
-    height: 500px;
+    height: 100%;
 
 }
 
 #contact-message-container p {
-    margin: 20px 020px;
-
+    margin: 20px 20px;
     font-size: 2em;
     font-weight: bold;
 }
 
 .form-container {
-
-    height: 100%;
+    height: 400px;
 }
 
 form {
     display: flex;
     justify-content: center;
-    height: 100%;
-
+    height: 400px;
 }
 
+label {
+    text-transform: capitalize;
+}
 
 .name-input {
     display: flex;
@@ -146,11 +142,17 @@ input {
 
 input:focus {
     border-color: #909f00;
+    padding-left: 5px;
 }
 
 textarea {
     resize: none;
     height: 50px;
+}
+
+textarea:focus {
+    border-color: #909f00;
+    padding-left: 5px;
 }
 
 button {

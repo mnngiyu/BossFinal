@@ -70,7 +70,7 @@ function displayPromos(promo) {
     //bouton supprimer
     const buttonDelete = document.createElement('button')
     buttonDelete.id = "deletePromo"
-    buttonDelete.innerHTML = "X"
+    buttonDelete.innerHTML = `<i class="fa-solid fa-trash"></i>`
     buttonDelete.addEventListener('click', () => {
         deletePromos(promo._id, card)
     })
@@ -79,7 +79,7 @@ function displayPromos(promo) {
     //bouton modifier
     const buttonUpdate = document.createElement('button')
     buttonUpdate.id = "updatePromo"
-    buttonUpdate.innerHTML = "modif"
+    buttonUpdate.innerHTML = `<i class="fa-solid fa-pencil"></i>`
     buttonUpdate.addEventListener('click', (e) => {
 
         e.preventDefault()
@@ -92,21 +92,14 @@ function displayPromos(promo) {
 
         const modifierForm = document.querySelector('#modifier-container');
         modifierForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
+            e.preventDefault()
             const formModifier = document.querySelector('#modifier-form-container')
             formModifier.style.background = "#98d68b"
             await updatePromo(promo._id)
         });
-
-
-
-
-        // bouton fermer fenetre modif
-
     })
 
     card.appendChild(buttonUpdate)
-
 
 
     //voir le détails
@@ -117,6 +110,16 @@ function displayPromos(promo) {
     details.addEventListener("click", () => {
         localStorage.setItem('idPromo', promo._id)
     })
+    
+    // const cards = document.createElement('div')
+    // cards.innerHTML = 'voir le détail'
+    // cards.href = `./student.html?id=${promo._id}`
+    // card.append(cards)
+    // cards.addEventListener("click", () => {
+    //     localStorage.setItem('idPromo', promo._id)
+    //     //document.querySelector('.cards').value =
+    // })
+
 
 }
 
@@ -149,8 +152,8 @@ addForm.addEventListener('submit', async (e) => {
     })
     if (response.ok) {
         displayPromos(data)
-
     }
+    clearForm()
 })
 
 // function modifier une promo
@@ -208,5 +211,10 @@ function formatDate(isoDateString) {
     return `${year}-${month}-${day}`
 }
 
+// Nettoie le formulaire
+function clearForm() {
+    const form = document.getElementById('promoForm');
+    form.reset();
+}
+
 displayAllPromos()
-openModal()
