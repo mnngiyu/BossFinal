@@ -1,12 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/student.css">
     <title>Promo Details</title>
 </head>
 <body>
-    <div id="promo-details"></div>
+    <header>
+        <nav>
+          <div class="container-header">
+            <div class="img-logo">
+              <a href="./index.html"
+                ><img src="./assets/images/logo2.png" alt="logo"
+              /></a>
+            </div>
+            <div>
+              <a href="./contact.html">CONTACT</a>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+
+        <h1 id="nameChoicePromo"></h1>
+
+        <div id="cardsContainer">
+            <div id="formContainer">
+                <form action="" method="POST" id="formStudent">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" name="prenom" id="prenom">
+
+                    <label for="nom">Nom</label>
+                    <input type="text" name="nom" id="nom">
+
+                    <label for="age">Age</label>
+                    <input type="number" name="age" id="age">
+
+                    <input type="file" id="avatar">
+
+                    <input type="submit" value="+" id="submitForm">
+                </form>
+            </div>
+        </div>
+        
+      </main>
+
+      <footer>
+        <div>
+            <p>
+                © Copyright Olivier & Manon School
+            </p>
+        </div>
+    </footer>
+    
 
   <script src="./assets/js/student.js"></script>
 </body>
