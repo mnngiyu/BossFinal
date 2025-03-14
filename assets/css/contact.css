@@ -1,6 +1,7 @@
+
 html {
     margin: 0;
-
+    height: 100%;
 }
 
 *:focus {
@@ -9,7 +10,6 @@ html {
 
 body {
     margin: 0;
-    height: 100%;
     background: url(../images/bg-contact.jpg) #f1f0ed;
     background-position: right;
     background-size: contain;
@@ -18,11 +18,7 @@ body {
 }
 
 header {
-    margin: 20px 80px;
-    padding: 0 30px;
-    background: #8f9f0088;
-    border-radius: 15px;
-
+    padding: 0 80px 0 110px;
     a {
         color: rgb(250, 245, 244);
         font-weight: bold;
@@ -42,6 +38,13 @@ header {
         width: 100px;
     }
 }
+.divlien-contact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-top: 20px;
+}
 
 main {
     display: flex;
@@ -59,7 +62,7 @@ main {
 
 #contact-info {
     padding: 0 40px;
-    margin-bottom: 60px;
+    margin-bottom: 10px;
 }
 
 #contact-info h1 {
@@ -104,6 +107,7 @@ main {
 }
 
 form {
+    margin-top: 10px;
     display: flex;
     justify-content: center;
     height: 400px;
@@ -168,4 +172,13 @@ button:hover {
     background-color: #909f00;
     cursor: pointer;
     transition: 0.2s ease;
+}
+
+footer{
+    bottom: 0;
+    text-align: center;
+    font-weight: bold;
+    padding: 1px 10px;
+    font-size: 0.6em;
+    color: #1f1f1f;
 }
