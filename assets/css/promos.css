@@ -1,6 +1,37 @@
 body {
     margin: 0;
-    background-color: #558868;
+    font-family: helvetica,arial;
+}
+
+header {
+    margin: 20px 80px;
+    padding: 0 30px;
+    background: #048abf;
+    border-radius: 15px;
+
+    a {
+        color: rgb(250, 245, 244);
+        font-weight: bold;
+        text-decoration: none;
+        text-shadow: 2px 0px 20px rgba(0, 0, 0, 0.98);
+    }
+}
+
+.container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.img-logo {
+    img {
+        width: 100px;
+    }
+}
+
+main {
+    position: relative;
 }
 
 main h1 {
@@ -11,29 +42,35 @@ main h1 {
 .display-cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 90px;
     padding: 50px;
 }
 
 #form-container {
     position: relative;
 }
-
-#form-container:hover {}
-
+.display-cards{
+    margin: 0 50px;
+}
 #submitForm {
     position: absolute;
     top: -5%;
-    left: 90%;
+    left: 95%;
     border-radius: 50px;
     height: 40px;
     width: 40px;
     cursor: pointer;
+    border: 0;
+    background: #a4b701;
+    box-shadow: 2px 2px 12px -4px #048abf;
+    display: flex;
+    align-items: center;
 }
 
 #form-container {
     display: flex;
     justify-content: center;
+    border: 2px solid #048abf3e;
 }
 
 form {
@@ -41,7 +78,6 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
     width: 100%;
 }
 
@@ -49,49 +85,52 @@ input {
     padding: 7px;
     width: 80%;
     margin: 10px 0;
+    border: 0.4px solid #001f2b;
+    border-radius: 10px;
 }
 
 #deletePromo {
     position: absolute;
-    left: 90%;
+    left: 95%;
     top: -5%;
     border-radius: 50px;
     border-style: none;
     height: 40px;
     width: 40px;
     visibility: hidden;
-    background: rgb(202, 76, 76);
+    background: #F2CEA2;
+    cursor: pointer;
+    box-shadow: 2px 2px 12px -4px black
 }
+
 #updatePromo {
     position: absolute;
-    left: 80%;
-    top: 10%;
+    left: 95%;
+    top: 12%;
     border-radius: 50px;
     border-style: none;
     height: 40px;
     width: 40px;
     visibility: hidden;
-    background: rgb(231, 207, 50);
+    background: #0477BF;
+    cursor: pointer;
+    box-shadow: 2px 2px 12px -4px black
 }
 
 
-
 .cards {
-    color: white;
-    text-transform: capitalize;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    color: #001f2b;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid gray;
+    border: 3px solid #048abf84;
     border-radius: 7px;
-    width: calc(25% - 17px);
+    width: calc(25% - 74px);
     height: 300px;
     position: relative;
-    background: url("../images/bg-card-1.jpg") center/cover;
     transition: 0.5s ease-in;
-    box-shadow: 2px 2px 12px -4px black
+    box-shadow: 2px 2px 12px -4px #000000;
 }
 
 .cards h2 {
@@ -99,8 +138,6 @@ input {
     margin: 0;
     text-align: center;
     font-size: 2em;
-    border-bottom: 5px solid;
-    background: rgb(100, 208, 235);
     width: 100%;
 }
 
@@ -113,23 +150,21 @@ input {
 }
 
 .cards:hover {
-background: rgba(255, 255, 255, 0.107);
-    cursor: pointer;
-
-    h2,
-    h3,
-    p {
+    background: rgba(255, 255, 255, 0.107);
+    box-shadow: 2px 2px 12px -1px #000000;
+    
+    h2, h3, p {
         transition: 0.2s ease-in;
-        color: rgba(0, 0, 0, 0.273);
+        color: rgba(0, 0, 0, 0.052);
     }
 }
 
 .cards a {
     position: absolute;
+    font-weight: bold;
     top: 45%;
-    font-size: 2em;
-    text-transform: uppercase;
-    color: white;
+    font-size: 1.5em;
+    color: rgb(21, 118, 222);
     text-decoration: none;
     opacity: 0;
     transition: opacity 0.2s ease-in;
@@ -137,11 +172,44 @@ background: rgba(255, 255, 255, 0.107);
 }
 
 .cards a:hover {
-    color: black;
+    color: rgb(0, 95, 158);
     transition: 0.4s ease;
+    cursor: pointer;
 }
 
 .cards:hover a {
     opacity: 1;
+}
 
+
+#modifier-container {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+#modifier-form-container {
+    width: 400px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+#close {
+    margin-bottom: 20px;
+}
+
+
+#modalo {
+    background: red;
+    padding: 20px 40px;
+    z-index: 2;
+    left: 50%;
+    text-align: center;
 }

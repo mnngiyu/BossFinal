@@ -5,32 +5,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/promos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Promos</title>
 </head>
 
 <body>
+    <header>
+        <nav>
+            <div class="container-header">
+                <div class="img-logo">
+                    <a href="./index.html"><img src="./assets/images/logo2.png" alt="logo" /></a>
+                </div>
+                <div>
+                    <a href="./contact.html">CONTACT</a>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <main>
         <h1>#PROMO</h1>
         <div class="display-cards">
             <div class="cards" id="form-container">
-                <form action="" method="POST">
-                    <label for="promo-name">Name</label>
-                    <input type="text" name="promoName" id="promo-name">
+                <form action="" method="POST" id="promoForm">
+                    
+                    <input type="text" name="promoName" id="promo-name" placeholder="Nom">
 
-                    <label for="promo-description">Intitulé</label>
-                    <input type="text" name="promoDescription" id="promo-description">
+                    <input type="text" name="promoDescription" id="promo-description" placeholder="Intitulé">
 
-                    <label for="promo-start">Date de début</label>
-                    <input type="date" name="promoStart" id="promo-start">
+                    <label for="promo-start"></label>
+                    <input type="date" name="promoStart" id="promo-start" placeholder="Date de début">
 
                     <label for="promo-end">Date de fin</label>
                     <input type="date" name="promoEnd" id="promo-end">
 
-                    <input type="submit" value="+" id="submitForm">
+                    <button type="submit" value="" id="submitForm"><i class="fa-solid fa-graduation-cap"></i><i class="fa-solid fa-plus"></i></button>
+
                 </form>
             </div>
 
+            <div id="modifier-container">
+                <div id="modifier-form-container">
+                    <form action="" method="POST">
+                        <label for="promo-name">Name</label>
+                        <input type="text" name="promoName" id="modifier-promo-name">
+
+                        <label for="promo-description">Intitulé</label>
+                        <input type="text" name="promoDescription" id="modifier-promo-description">
+
+                        <label for="promo-start">Date de début</label>
+                        <input type="date" name="promoStart" id="modifier-promo-start">
+
+                        <label for="promo-end">Date de fin</label>
+                        <input type="date" name="promoEnd" id="modifier-promo-end">
+
+                        <input type="submit" value="Soumettre" id="submitModifierForm">
+                        <button id="close">Fermer</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </main>
 

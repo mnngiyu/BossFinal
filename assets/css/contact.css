@@ -1,0 +1,171 @@
+html {
+    margin: 0;
+
+}
+
+*:focus {
+    outline: none;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    background: url(../images/bg-contact.jpg) #f1f0ed;
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
+
+header {
+    margin: 20px 80px;
+    padding: 0 30px;
+    background: #8f9f0088;
+    border-radius: 15px;
+
+    a {
+        color: rgb(250, 245, 244);
+        font-weight: bold;
+        text-decoration: none;
+        text-shadow: 2px 0px 20px rgba(0, 0, 0, 0.98);
+    }
+}
+
+.container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img-logo {
+    img {
+        width: 100px;
+    }
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+/* Informations concernant l'école ********************************************************************/
+#contact-info-container {
+    padding: 10px;
+    width: 30%;
+    color: rgb(67, 63, 63);
+}
+
+#contact-info {
+    padding: 0 40px;
+    margin-bottom: 60px;
+}
+
+#contact-info h1 {
+    font-size: 3em;
+}
+
+#contact-info .info-style {
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+#contact-info .info-style h2 {
+    display: flex;
+    align-items: center;
+}
+
+#contact-info .info-style i {
+    font-size: 0.6em;
+    padding-right: 20px;
+}
+
+/* Formulaire de contact *****************************************************************************************/
+#contact-message-container {
+    background: white;
+    margin-right: 40px;
+    border-radius: 7px;
+    box-shadow: 1px 1px 15px -5px #000000;
+    color: rgb(67, 63, 63);
+    height: 100%;
+
+}
+
+#contact-message-container p {
+    margin: 20px 20px;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.form-container {
+    height: 400px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    height: 400px;
+}
+
+label {
+    text-transform: capitalize;
+}
+
+.name-input {
+    display: flex;
+    margin-bottom: 15%;
+    padding: 0 20px;
+    gap: 10px;
+}
+
+.name-input input {
+    gap: 10px;
+}
+
+.input-style {
+    height: 25%;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+}
+
+input {
+    height: 30px;
+    border: 0.5px solid rgb(67, 63, 63);
+    ;
+    border-radius: 3px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #909f00;
+    padding-left: 5px;
+}
+
+textarea {
+    resize: none;
+    height: 50px;
+}
+
+textarea:focus {
+    border-color: #909f00;
+    padding-left: 5px;
+}
+
+button {
+    margin: 0 20px;
+    padding: 15px 20px;
+    border-radius: 7px;
+    background: #8f9f0088;
+    color: white;
+    border: 0;
+}
+
+button:hover {
+    background-color: #909f00;
+    cursor: pointer;
+    transition: 0.2s ease;
+}

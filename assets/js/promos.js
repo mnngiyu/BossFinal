@@ -12,74 +12,35 @@ async function getPromos() {
         }
     })
     const data = await response.json()
-
     return data
 }
 
-// supprime une promo
-async function deletePromos(id, el) {
+// attraper une id de promo
+async function getPromosbyId(id) {
     const response = await fetch(urlBase + "promos/" + id, {
-        method: "DELETE",
+        method: "GET",
         headers: {
             Authorization: "Bearer " + token
         }
-    })
-    if (response.ok) {
-        el.remove()
-    }
-}
-
-
-// modifier une promo
-async function updatePromo(id, data) {
-    const response = await fetch(urlBase + "promos/" + id, {
-        method: "PUT",
-        headers: {
-            Authorization: "Bearer " + token
-        }
-
-    })
-
-}
-
-/// soumettre le formulaire
-addForm.addEventListener('submit', async (e) => {
-
-    e.preventDefault()
-    let data = {
-        name: document.querySelector('#promo-name').value,
-        startDate: document.querySelector('#promo-start').value,
-        endDate: document.querySelector('#promo-end').value,
-        formationDescription: document.querySelector('#promo-description').value,
-    }
-
-    const response = await fetch(urlBase + "promos", {
-        method: "POST",
-        headers: {
-            Authorization: "Bearer " + token,
-            "Content-type": "Application/json"
-        },
-        body: JSON.stringify(data)
-    })
-    if (response.ok) {
-        displayPromos(data)
-    }
-console.log(data);
-
-})
-
-
-// affiche toutes les promos
-async function displayAllPromos() {
-    const promos = await getPromos()
-    promos.forEach(promo => {
-        displayPromos(promo)
     });
+
+    const data = await response.json();
+    console.log(data);
+    const startDate = data.startDate ? formatDate(data.startDate) : '';
+    const endDate = data.endDate ? formatDate(data.endDate) : '';
+
+    document.querySelector('#modifier-promo-name').value = data.name;
+    document.querySelector('#modifier-promo-start').value = startDate;
+    document.querySelector('#modifier-promo-end').value = endDate;
+    document.querySelector('#modifier-promo-description').value = data.formationDescription;
+
+    return data;
 }
 
-// affiche créer une promo
+// affiche une promo
 function displayPromos(promo) {
     const displayCards = document.querySelector('.display-cards')
+
 
     // affiche la div card
     const card = document.createElement('div')
@@ -98,49 +59,47 @@ function displayPromos(promo) {
 
     // afficher date de fin
     const startPromo = document.createElement('p')
-    startPromo.innerHTML = promo.startDate
+    startPromo.innerHTML = formatDate(promo.startDate)
     card.appendChild(startPromo)
 
     // afficher date de début
     const endPromo = document.createElement('p')
-    endPromo.innerHTML = promo.endDate
+    endPromo.innerHTML = formatDate(promo.endDate)
     card.appendChild(endPromo)
 
     //bouton supprimer
     const buttonDelete = document.createElement('button')
     buttonDelete.id = "deletePromo"
-    buttonDelete.innerHTML = "X"
+    buttonDelete.innerHTML = `<i class="fa-solid fa-trash"></i>`
     buttonDelete.addEventListener('click', () => {
         deletePromos(promo._id, card)
     })
     card.appendChild(buttonDelete)
 
-     // Bouton modifier
-     const buttonUpdate = document.createElement('button');
-     buttonUpdate.innerHTML = "Update";
-     buttonDelete.id = "updateButton"
-     card.appendChild(buttonUpdate);
-     buttonUpdate.addEventListener('click', async () => {
-         // Récupérez les données à mettre à jour
-         let data = {
-             name: document.querySelector('#promo-name').value,
-             startDate: document.querySelector('#promo-start').value,
-             endDate: document.querySelector('#promo-end').value,
-             formationDescription: document.querySelector('#promo-description').value,
-         };
- 
-         const success = await updatePromo(promo._id, data);
-         if (success) {
-             // Mettez à jour l'affichage avec les nouvelles données
-             card.querySelector('h2').innerHTML = data.name;
-             card.querySelector('h3').innerHTML = data.formationDescription;
-             card.querySelectorAll('p')[0].innerHTML = `Start Date: ${data.startDate}`;
-             card.querySelectorAll('p')[1].innerHTML = `End Date: ${data.endDate}`;
-         } else {
-             console.error("Failed to update the resource.");
-         }
-     });
-    
+    //bouton modifier
+    const buttonUpdate = document.createElement('button')
+    buttonUpdate.id = "updatePromo"
+    buttonUpdate.innerHTML = `<i class="fa-solid fa-pencil"></i>`
+    buttonUpdate.addEventListener('click', (e) => {
+
+        e.preventDefault()
+        const modifier = document.querySelector('#modifier-container')
+        const formModifier = document.querySelector('#modifier-form-container')
+
+        modifier.style.display = "flex"
+        formModifier.style.background = "#F2CEA2"
+        getPromosbyId(promo._id)
+
+        const modifierForm = document.querySelector('#modifier-container');
+        modifierForm.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            const formModifier = document.querySelector('#modifier-form-container')
+            formModifier.style.background = "#98d68b"
+            await updatePromo(promo._id)
+        });
+    })
+
+    card.appendChild(buttonUpdate)
 
 
     //voir le détails
@@ -148,10 +107,114 @@ function displayPromos(promo) {
     details.innerHTML = 'voir le détail'
     details.href = `./student.html?id=${promo._id}`
     card.append(details)
-    details.addEventListener("click",()=>{
-        localStorage.setItem('idPromo',promo._id)
+    details.addEventListener("click", () => {
+        localStorage.setItem('idPromo', promo._id)
+    })
+    
+    // const cards = document.createElement('div')
+    // cards.innerHTML = 'voir le détail'
+    // cards.href = `./student.html?id=${promo._id}`
+    // card.append(cards)
+    // cards.addEventListener("click", () => {
+    //     localStorage.setItem('idPromo', promo._id)
+    //     //document.querySelector('.cards').value =
+    // })
+
+
+}
+
+// affiche toutes les promos
+async function displayAllPromos() {
+    const promos = await getPromos()
+    promos.forEach(promo => {
+        displayPromos(promo)
+    });
+}
+
+/// soumettre le formulaire, method post inside
+addForm.addEventListener('submit', async (e) => {
+
+    e.preventDefault()
+    let data = {
+        name: document.querySelector('#promo-name').value,
+        startDate: document.querySelector('#promo-start').value,
+        endDate: document.querySelector('#promo-end').value,
+        formationDescription: document.querySelector('#promo-description').value,
+    }
+
+    const response = await fetch(urlBase + "promos", {
+        method: "POST",
+        headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "Application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    if (response.ok) {
+        displayPromos(data)
+    }
+    clearForm()
+})
+
+// function modifier une promo
+async function updatePromo(id) {
+    const data = {
+        name: document.querySelector('#modifier-promo-name').value,
+        startDate: formatDate(document.querySelector('#modifier-promo-start').value),
+        endDate: formatDate(document.querySelector('#modifier-promo-end').value),
+        formationDescription: document.querySelector('#modifier-promo-description').value,
+    };
+
+    const response = await fetch(urlBase + "promos/" + id, {
+        method: "PUT",
+        headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
     })
 
+    if (response.ok) {
+        console.log('Promo mise à jour avec succès');
+    }
+}
+
+// fermer la modale modifier
+document.querySelector('#close').addEventListener('click', () => {
+    const modifier = document.querySelector('#modifier-container')
+    const formModifier = document.querySelector('#modifier-form-container')
+    modifier.style.display = "none"
+    formModifier.style.background = "red"
+})
+
+// supprime une promo
+async function deletePromos(id, el) {
+    const response = await fetch(urlBase + "promos/" + id, {
+        method: "DELETE",
+        headers: {
+            Authorization: "Bearer " + token
+        }
+    })
+    if (response.ok) {
+        el.remove()
+        console.log('ca marche');
+
+    }
+}
+
+// formater la date
+function formatDate(isoDateString) {
+    const date = new Date(isoDateString)
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    return `${year}-${month}-${day}`
+}
+
+// Nettoie le formulaire
+function clearForm() {
+    const form = document.getElementById('promoForm');
+    form.reset();
 }
 
 displayAllPromos()
